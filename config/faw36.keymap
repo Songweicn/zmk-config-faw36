@@ -71,34 +71,48 @@
         };
 
         colemak {
-            bindings = <&to 4>;
+            bindings = <&to 0>;
             key-positions = <13 16>;
-            layers = <0>;
+            layers = <1>;
         };
 
         default {
-            bindings = <&to 0>;
+            bindings = <&to 1>;
             key-positions = <13 16>;
-            layers = <4>;
+            layers = <0>;
         };
     };
 
     keymap {
         compatible = "zmk,keymap";
 
-        default {
+        colemak-dh {
+            bindings = <
+&kp Q           &kp W           &kp F               &kp P                    &kp B            &kp J        &kp L                  &kp U                &kp Y            &kp APOS
+&mt LEFT_GUI A  &mt LEFT_ALT R  &mt LEFT_CONTROL S  &mt LEFT_SHIFT T         &kp G            &kp M        &mt RIGHT_SHIFT N      &mt RIGHT_CONTROL E  &mt RIGHT_ALT I  &mt RIGHT_GUI O
+&kp Z           &kp X           &kp C               &kp D                    &kp V            &kp K        &kp H                  &kp COMMA            &kp DOT          &kp FSLH
+                &kp C_MUTE      &mt LEFT_GUI TAB    &mt LEFT_CONTROL ESCAPE  &lt 3 BACKSPACE  &lt 2 SPACE  &mt RIGHT_SHIFT ENTER  &kp DELETE           &kp HOME
+            >;
+
+            label = "colemak-dh";
+            sensor-bindings =
+                <&inc_dec_kp C_VOLUME_DOWN C_VOLUME_UP>,
+                <&inc_dec_kp PAGE_UP PAGE_DOWN>;
+        };
+
+        qwerty {
             bindings = <
 &kp Q           &kp W           &kp E               &kp R                    &kp T            &kp Y        &kp U                  &kp I                &kp O            &kp P
 &mt LEFT_WIN A  &mt LEFT_ALT S  &mt LEFT_CONTROL D  &mt LEFT_SHIFT F         &kp G            &kp H        &mt RIGHT_SHIFT J      &mt RIGHT_CONTROL K  &mt RIGHT_ALT L  &mt RIGHT_WIN SEMICOLON
 &kp Z           &kp X           &kp C               &kp V                    &kp B            &kp N        &kp M                  &kp COMMA            &kp DOT          &kp FSLH
-                &kp C_MUTE      &mt ESC LEFT_GUI    &mt LEFT_CONTROL ESCAPE  &lt 2 BACKSPACE  &lt 1 SPACE  &mt RIGHT_SHIFT ENTER  &kp DEL              &kp HOME
+                &kp C_MUTE      &mt LEFT_GUI TAB    &mt LEFT_CONTROL ESCAPE  &lt 3 BACKSPACE  &lt 2 SPACE  &mt RIGHT_SHIFT ENTER  &kp DEL              &kp HOME
             >;
 
             sensor-bindings =
                 <&inc_dec_kp C_VOLUME_DOWN C_VOLUME_UP>,
                 <&inc_dec_kp PG_UP PG_DN>;
 
-            label = "default";
+            label = "qwerty";
         };
 
         sym {
@@ -106,7 +120,7 @@
 &kp EXCLAMATION  &kp AT_SIGN  &kp UNDER       &kp PLUS      &kp PERCENT      &kp BACKSLASH  &kp NUMBER_7  &kp N8        &kp NUMBER_9  &kp COMMA
 &kp PLUS         &kp EQUAL    &kp UNDERSCORE  &kp MINUS     &kp CARET        &kp NUMBER_0   &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &kp PERIOD
 &none            &none        &kp QUESTION    &kp ASTERISK  &kp AMPERSAND    &kp SEMICOLON  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp SLASH
-                 &kp C_MUTE   &trans          &trans        &lt 3 BACKSPACE  &trans         &trans        &trans        &kp END
+                 &kp C_MUTE   &trans          &trans        &lt 4 BACKSPACE  &trans         &trans        &trans        &kp END
             >;
 
             sensor-bindings =
@@ -121,7 +135,7 @@
 &kp LA(F4)        &kp LC(LS(TAB))  &kp LC(TAB)   &kp LC(W)           &kp C_VOLUME_UP    &kp HOME        &kp PAGE_DOWN   &kp PAGE_UP   &kp END          &trans
 &kp LEFT_CONTROL  &kp LEFT_GUI     &kp LEFT_ALT  &mt LEFT_SHIFT TAB  &kp C_VOLUME_DOWN  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp UP_ARROW  &kp RIGHT_ARROW  &kp C_AL_CALCULATOR
 &trans            &kp LS(LA(TAB))  &kp LA(TAB)   &kp LC(V)           &kp C_PLAY_PAUSE   &kp INSERT      &kp DELETE      &kp C_PREV    &kp C_NEXT       &trans
-                  &trans           &trans        &trans              &trans             &lt 3 SPACE     &trans          &trans        &kp SCROLLLOCK
+                  &trans           &trans        &trans              &trans             &lt 4 SPACE     &trans          &trans        &kp SCROLLLOCK
             >;
 
             label = "nav";
@@ -132,27 +146,13 @@
 
         fun {
             bindings = <
-&kp F1  &kp F2                  &kp F3                   &kp F4      &kp F5   &kp CAPSLOCK  &trans        &to 0            &trans           &trans
+&kp F1  &kp F2                  &kp F3                   &kp F4      &kp F5   &kp CAPSLOCK  &trans        &trans           &trans           &trans
 &kp F6  &kp F7                  &kp F8                   &kp F9      &kp F10  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2     &bt BT_SEL 3     &bt BT_SEL 4
 &trans  &kp LC(LG(LEFT_ARROW))  &kp LC(LG(RIGHT_ARROW))  &kp F11     &kp F12  &out OUT_USB  &out OUT_BLE  &kp PRINTSCREEN  &kp PAUSE_BREAK  &bt BT_CLR
         &trans                  &bootloader              &sys_reset  &trans   &trans        &sys_reset    &bootloader      &trans
             >;
 
             label = "fun";
-        };
-
-        colemak-dh {
-            bindings = <
-&kp Q  &kp W   &kp F   &kp P   &kp B   &kp J   &kp L   &kp U      &kp Y    &kp APOS
-&kp A  &kp R   &kp S   &kp T   &kp G   &kp M   &kp N   &kp E      &kp I    &kp O
-&kp Z  &kp X   &kp C   &kp D   &kp V   &kp K   &kp H   &kp COMMA  &kp DOT  &kp FSLH
-       &trans  &trans  &trans  &trans  &trans  &trans  &trans     &trans
-            >;
-
-            label = "colemak-dh";
-            sensor-bindings =
-                <&inc_dec_kp C_VOLUME_DOWN C_VOLUME_UP>,
-                <&inc_dec_kp PAGE_UP PAGE_DOWN>;
         };
     };
 };
