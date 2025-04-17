@@ -16,7 +16,7 @@
 #define NAV 5
 
 &mt {
-    tapping-term-ms = <300>;
+    tapping-term-ms = <170>;
     flavor = "tap-preferred";
 };
 
