@@ -134,7 +134,7 @@
             bindings = <
 &kp LA(F4)    &kp LC(LS(TAB))  &kp LC(TAB)       &kp LC(W)           &kp C_VOLUME_UP    &kp HOME        &kp PAGE_DOWN     &kp PAGE_UP   &kp END          &trans
 &kp LEFT_GUI  &kp LEFT_ALT     &kp LEFT_CONTROL  &mt LEFT_SHIFT TAB  &kp C_VOLUME_DOWN  &kp LEFT_ARROW  &kp DOWN_ARROW    &kp UP_ARROW  &kp RIGHT_ARROW  &kp C_AL_CALCULATOR
-&trans        &kp LS(LA(TAB))  &kp LA(TAB)       &kp LC(V)           &kp C_MUTE         &kp C_PREVIOUS  &kp C_PLAY_PAUSE  &kp C_STOP    &kp C_NEXT       &trans
+&trans        &kp LS(LA(TAB))  &kp LA(TAB)       &kp LC(V)           &kp C_MUTE         &kp C_PREVIOUS  &kp C_PLAY_PAUSE  &kp C_STOP    &kp C_NEXT       &kp INS
               &trans           &trans            &trans              &trans             &lt 4 SPACE     &trans            &trans        &kp SCROLLLOCK
             >;
 
