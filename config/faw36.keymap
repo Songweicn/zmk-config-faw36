@@ -18,10 +18,10 @@
 #define NAV 5
 
 &mt {
-    tapping-term-ms = <250>;
-    flavor = "hold-preferred";
     quick-tap-ms = <175>;
     require-prior-idle-ms = <150>;
+    retro-tap;
+    hold-trigger-key-positions = <34 35 36 33 32 31 10 19>;
 };
 
 / {
@@ -53,7 +53,7 @@
             bindings = <
 &kp Q           &kp W           &kp F               &kp P             &kp B      &kp J        &kp L              &kp U                &kp Y            &kp APOS
 &mt LEFT_GUI A  &mt LEFT_ALT R  &mt LEFT_CONTROL S  &mt LEFT_SHIFT T  &kp G      &kp M        &mt RIGHT_SHIFT N  &mt RIGHT_CONTROL E  &mt RIGHT_ALT I  &mt RIGHT_GUI O
-&lt 8 Z         &kp X           &kp C               &kp D             &kp V      &kp K        &kp H              &kp COMMA            &kp DOT          &lt 8 SLASH
+&kp Z           &kp X           &kp C               &kp D             &kp V      &kp K        &kp H              &kp COMMA            &kp DOT          &kp SLASH
                 &kp C_MUTE      &lt 4 ESCAPE        &lt 2 SPACE       &lt 3 TAB  &lt 6 ENTER  &lt 5 BACKSPACE    &lt 7 DELETE         &kp HOME
             >;
 
@@ -67,7 +67,7 @@
             bindings = <
 &kp Q           &kp W           &kp E               &kp R             &kp T   &kp Y   &kp U              &kp I                &kp O            &kp P
 &mt LEFT_WIN A  &mt LEFT_ALT S  &mt LEFT_CONTROL D  &mt LEFT_SHIFT F  &kp G   &kp H   &mt RIGHT_SHIFT J  &mt RIGHT_CONTROL K  &mt RIGHT_ALT L  &mt RIGHT_WIN SEMICOLON
-&lt 8 Z         &kp X           &kp C               &kp V             &kp B   &kp N   &kp M              &kp COMMA            &kp PERIOD       &lt 8 SLASH
+&kp Z           &kp X           &kp C               &kp V             &kp B   &kp N   &kp M              &kp COMMA            &kp PERIOD       &kp SLASH
                 &kp C_MUTE      &trans              &trans            &trans  &trans  &trans             &trans               &kp HOME
             >;
 
@@ -161,17 +161,6 @@
             sensor-bindings =
                 <&inc_dec_kp C_VOLUME_DOWN C_VOLUME_UP>,
                 <&inc_dec_kp PG_UP PAGE_DOWN>;
-        };
-
-        button {
-            bindings = <
-&trans     &trans     &trans     &trans     &trans     &trans     &trans     &trans     &trans     &trans
-&sk LGUI   &sk LALT   &sk LCTRL  &sk LSHFT  &trans     &trans     &sk LSHFT  &sk LCTRL  &sk LALT   &sk LGUI
-&kp LC(Z)  &kp LC(X)  &kp LC(C)  &kp LC(V)  &kp LC(Y)  &kp LC(Y)  &kp LC(V)  &kp LC(C)  &kp LC(X)  &kp LC(Z)
-           &trans     &mkp MCLK  &mkp LCLK  &mkp RCLK  &mkp RCLK  &mkp LCLK  &mkp MCLK  &trans
-            >;
-
-            label = "button";
         };
     };
 };
