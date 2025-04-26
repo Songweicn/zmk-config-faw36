@@ -18,10 +18,12 @@
 #define NAV 5
 
 &mt {
-    quick-tap-ms = <175>;
+    quick-tap-ms = <100>;
     require-prior-idle-ms = <150>;
     retro-tap;
     hold-trigger-key-positions = <34 35 36 33 32 31 10 19>;
+    flavor = "hold-preferred";
+    tapping-term-ms = <175>;
 };
 
 / {
@@ -29,20 +31,8 @@
         compatible = "zmk,combos";
 
         extra {
-            bindings = <&tog 1>;
+            bindings = <&tog 7>;
             key-positions = <13 16>;
-        };
-    };
-
-    behaviors {
-        MT_Safe: MT_Safe {
-            compatible = "zmk,behavior-hold-tap";
-            label = "MT_SAFE";
-            bindings = <&kp>, <&kp>;
-
-            #binding-cells = <2>;
-            tapping-term-ms = <300>;
-            hold-trigger-key-positions = <10 19>;
         };
     };
 
@@ -54,7 +44,7 @@
 &kp Q           &kp W           &kp F               &kp P             &kp B      &kp J        &kp L              &kp U                &kp Y            &kp APOS
 &mt LEFT_GUI A  &mt LEFT_ALT R  &mt LEFT_CONTROL S  &mt LEFT_SHIFT T  &kp G      &kp M        &mt RIGHT_SHIFT N  &mt RIGHT_CONTROL E  &mt RIGHT_ALT I  &mt RIGHT_GUI O
 &kp Z           &kp X           &kp C               &kp D             &kp V      &kp K        &kp H              &kp COMMA            &kp DOT          &kp SLASH
-                &kp C_MUTE      &lt 4 ESCAPE        &lt 2 SPACE       &lt 3 TAB  &lt 6 ENTER  &lt 5 BACKSPACE    &lt 7 DELETE         &kp HOME
+                &kp C_MUTE      &lt 3 ESCAPE        &lt 1 SPACE       &lt 2 TAB  &lt 5 ENTER  &lt 4 BACKSPACE    &lt 6 DELETE         &kp HOME
             >;
 
             label = "base";
@@ -63,26 +53,11 @@
                 <&inc_dec_kp PAGE_UP PAGE_DOWN>;
         };
 
-        extra {
-            bindings = <
-&kp Q           &kp W           &kp E               &kp R             &kp T   &kp Y   &kp U              &kp I                &kp O            &kp P
-&mt LEFT_WIN A  &mt LEFT_ALT S  &mt LEFT_CONTROL D  &mt LEFT_SHIFT F  &kp G   &kp H   &mt RIGHT_SHIFT J  &mt RIGHT_CONTROL K  &mt RIGHT_ALT L  &mt RIGHT_WIN SEMICOLON
-&kp Z           &kp X           &kp C               &kp V             &kp B   &kp N   &kp M              &kp COMMA            &kp PERIOD       &kp SLASH
-                &kp C_MUTE      &trans              &trans            &trans  &trans  &trans             &trans               &kp HOME
-            >;
-
-            sensor-bindings =
-                <&inc_dec_kp C_VOLUME_DOWN C_VOLUME_UP>,
-                <&inc_dec_kp PG_UP PG_DN>;
-
-            label = "extra";
-        };
-
         nav {
             bindings = <
-&none     &none          &to 1             &to 0      &none   &kp RC(Y)   &kp RC(V)  &kp RC(C)      &kp RC(X)       &kp RC(Z)
+&none     &none          &to 0             &to 0      &none   &kp RC(Y)   &kp RC(V)  &kp RC(C)      &kp RC(X)       &kp RC(Z)
 &sk LGUI  &sk LEFT_ALT   &sk LEFT_CONTROL  &sk LSHFT  &none   &kp CAPS    &kp LEFT   &kp DOWN       &kp UP_ARROW    &kp RIGHT_ARROW
-&none     &sk RIGHT_ALT  &to 5             &tog 2     &none   &kp INSERT  &kp HOME   &kp PAGE_DOWN  &kp PAGE_UP     &kp END
+&none     &sk RIGHT_ALT  &to 4             &tog 1     &none   &kp INSERT  &kp HOME   &kp PAGE_DOWN  &kp PAGE_UP     &kp END
           &trans         &trans            &trans     &trans  &trans      &trans     &trans         &kp SCROLLLOCK
             >;
 
@@ -95,9 +70,9 @@
         mouse {
             label = "mouse";
             bindings = <
-&none     &none          &to 1             &to 0      &none   &kp RC(Y)   &kp RC(V)       &kp RC(C)       &kp RC(X)        &kp RC(Z)
+&none     &none          &to 0             &to 0      &none   &kp RC(Y)   &kp RC(V)       &kp RC(C)       &kp RC(X)        &kp RC(Z)
 &sk LGUI  &sk LEFT_ALT   &sk LEFT_CONTROL  &sk LSHFT  &none   &kp CAPS    &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &msc SCRL_DOWN
-&none     &sk RIGHT_ALT  &to 6             &tog 3     &none   &kp INSERT  &none           &none           &none            &none
+&none     &sk RIGHT_ALT  &to 5             &tog 2     &none   &kp INSERT  &none           &none           &none            &none
           &trans         &trans            &trans     &trans  &mkp RCLK   &mkp LCLK       &mkp MCLK       &kp SCROLLLOCK
             >;
 
@@ -109,9 +84,9 @@
         media {
             label = "media";
             bindings = <
-&bootloader  &sys_reset     &to 1             &to 0      &none   &out OUT_USB  &none             &none              &none            &soft_off
+&bootloader  &sys_reset     &to 0             &to 0      &none   &out OUT_USB  &none             &none              &none            &soft_off
 &sk LGUI     &sk LEFT_ALT   &kp LEFT_CONTROL  &sk LSHFT  &none   &out OUT_BLE  &kp C_PREVIOUS    &kp C_VOLUME_DOWN  &kp C_VOLUME_UP  &kp C_NEXT
-&none        &sk RIGHT_ALT  &to 7             &tog 4     &none   &bt BT_CLR    &bt BT_SEL 0      &bt BT_SEL 1       &bt BT_SEL 2     &bt BT_SEL 3
+&none        &sk RIGHT_ALT  &to 6             &tog 3     &none   &bt BT_CLR    &bt BT_SEL 0      &bt BT_SEL 1       &bt BT_SEL 2     &bt BT_SEL 3
              &trans         &trans            &trans     &trans  &kp C_STOP    &kp C_PLAY_PAUSE  &kp C_MUTE         &kp SPACE
             >;
 
@@ -122,9 +97,9 @@
 
         num {
             bindings = <
-&kp LBKT   &kp N7      &kp N8      &kp N9  &kp RBKT   &none   &to 0      &to 1      &none          &none
+&kp LBKT   &kp N7      &kp N8      &kp N9  &kp RBKT   &none   &to 0      &to 0      &none          &none
 &kp SEMI   &kp N4      &kp N5      &kp N6  &kp EQUAL  &none   &sk LSHFT  &sk LCTRL  &sk LALT       &sk LGUI
-&kp GRAVE  &kp N1      &kp N2      &kp N3  &kp BSLH   &none   &tog 5     &to 2      &sk RIGHT_ALT  &none
+&kp GRAVE  &kp N1      &kp N2      &kp N3  &kp BSLH   &none   &tog 4     &to 1      &sk RIGHT_ALT  &none
            &kp C_MUTE  &kp PERIOD  &kp N0  &kp MINUS  &trans  &trans     &trans     &kp END
             >;
 
@@ -138,9 +113,9 @@
         sym {
             label = "sym";
             bindings = <
-&kp LEFT_BRACE  &kp AMPERSAND    &kp ASTERISK          &kp LEFT_PARENTHESIS   &kp RIGHT_BRACE  &none   &to 0      &to 1      &none          &none
+&kp LEFT_BRACE  &kp AMPERSAND    &kp ASTERISK          &kp LEFT_PARENTHESIS   &kp RIGHT_BRACE  &none   &to 0      &to 0      &none          &none
 &kp COLON       &kp DOLLAR       &kp PERCENT           &kp CARET              &kp PLUS         &none   &sk LSHFT  &sk LCTRL  &sk LALT       &sk LGUI
-&kp TILDE       &kp EXCLAMATION  &kp AT_SIGN           &kp HASH               &kp PIPE         &none   &tog 6     &to 3      &sk RIGHT_ALT  &none
+&kp TILDE       &kp EXCLAMATION  &kp AT_SIGN           &kp HASH               &kp PIPE         &none   &tog 5     &to 2      &sk RIGHT_ALT  &none
                 &kp C_MUTE       &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp UNDERSCORE   &trans  &trans     &trans     &kp END
             >;
 
@@ -152,15 +127,29 @@
         fun {
             label = "fun";
             bindings = <
-&kp F12  &kp F7      &kp F8      &kp F9     &kp PRINTSCREEN  &none   &to 0      &to 1      &sys_reset     &bootloader
+&kp F12  &kp F7      &kp F8      &kp F9     &kp PRINTSCREEN  &none   &to 0      &to 0      &sys_reset     &bootloader
 &kp F11  &kp F4      &kp F5      &kp F6     &kp SCROLLLOCK   &none   &sk LSHFT  &sk LCTRL  &sk LALT       &sk LGUI
-&kp F10  &kp F1      &kp F2      &kp F3     &kp PAUSE_BREAK  &none   &tog 7     &to 4      &sk RIGHT_ALT  &none
+&kp F10  &kp F1      &kp F2      &kp F3     &kp PAUSE_BREAK  &none   &tog 6     &to 3      &sk RIGHT_ALT  &none
          &kp C_MUTE  &kp ESCAPE  &kp SPACE  &kp TAB          &trans  &trans     &trans     &kp END
             >;
 
             sensor-bindings =
                 <&inc_dec_kp C_VOLUME_DOWN C_VOLUME_UP>,
                 <&inc_dec_kp PG_UP PAGE_DOWN>;
+        };
+
+        base_mac {
+            label = "base_mac";
+            bindings = <
+&kp Q           &kp W           &kp F               &kp P             &kp B      &kp J        &kp L              &kp U                &kp Y            &kp APOS
+&mt LEFT_GUI A  &mt LEFT_ALT R  &mt LEFT_CONTROL S  &mt LEFT_SHIFT T  &kp G      &kp M        &mt RIGHT_SHIFT N  &mt RIGHT_CONTROL E  &mt RIGHT_ALT I  &mt RIGHT_GUI O
+&kp Z           &kp X           &kp C               &kp D             &kp V      &kp K        &kp H              &kp COMMA            &kp DOT          &kp SLASH
+                &kp C_MUTE      &lt 3 ESCAPE        &lt 1 SPACE       &lt 2 TAB  &lt 5 ENTER  &lt 4 BACKSPACE    &lt 6 DELETE         &kp HOME
+            >;
+
+            sensor-bindings =
+                <&inc_dec_kp C_VOLUME_DOWN C_VOLUME_UP>,
+                <&inc_dec_kp PAGE_UP PAGE_DOWN>;
         };
     };
 };
