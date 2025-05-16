@@ -18,9 +18,6 @@
 #define NAV 5
 
 &mt {
-    quick-tap-ms = <100>;
-    require-prior-idle-ms = <150>;
-    tapping-term-ms = <175>;
 };
 
 / {
